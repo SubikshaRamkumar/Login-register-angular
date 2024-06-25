@@ -49,4 +49,15 @@ export class AuthService {
       }
     );
   }
+  detail() {
+    let token = sessionStorage.getItem('token');
+    return this.http.post<{
+      users: Array<{ localId: string; displayName: string }>;
+    }>(
+      'https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBwDEzWp2AvsnqxosdOT4BksukarcRTcvE',
+      {
+        idToken: token,
+      }
+    );
+  }
 }
