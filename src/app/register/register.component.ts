@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
         next: (data) => {
           // store token after successful registration
           this.auth.storeToken(data.idToken);
-          console.log(data.idToken);
+          // console.log(data.idToken);
           this.auth.canAuthenticate();
         },
         error: (data) => {
@@ -58,7 +58,7 @@ export class RegisterComponent implements OnInit {
       })
       .add(() => {
         this.loading = false;
-        console.log('Register completed');
+        // console.log('Register completed');
       });
   }
 }

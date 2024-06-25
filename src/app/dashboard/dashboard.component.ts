@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
   constructor(private auth: AuthService) {}
 
   ngOnInit(): void {
-    console.log('access');
+    // console.log('access');
     this.auth.canAccess();
     if (this.auth.isAuthenticated()) {
       // call user details service

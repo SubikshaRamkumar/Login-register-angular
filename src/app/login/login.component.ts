@@ -30,11 +30,11 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.auth.storeToken(data.idToken);
-          console.log(data.idToken);
+          // console.log(data.idToken);
           this.auth.canAuthenticate();
         },
         error: (data) => {
-          console.log(data.error);
+          // console.log(data.error);
           if (data.error.error.message == 'INVALID_LOGIN_CREDENTIALS') {
             this.errorMessage = 'Invalid credentails';
           } else {
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       })
       .add(() => {
         this.loading = false;
-        console.log('login successful');
+        // console.log('login successful');
       });
   }
 }
