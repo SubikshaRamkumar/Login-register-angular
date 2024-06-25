@@ -3,6 +3,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../_service/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -16,8 +17,18 @@ export class RegisterComponent {
   formdata = { name: '', email: '', password: '' };
   errorMessage = '';
   loading = false;
+  constructor(private auth: AuthService) {}
   onSubmit() {
-    console.log(this.formdata);
+    // console.log(this.formdata);
     this.loading = true;
+    // call register service
+
+    console.log(
+      this.auth.register(
+        this.formdata.name,
+        this.formdata.email,
+        this.formdata.password
+      )
+    );
   }
 }
