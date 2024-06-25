@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { AuthService } from '../_service/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,4 +9,11 @@ import { NavbarComponent } from '../navbar/navbar.component';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
-export class DashboardComponent {}
+export class DashboardComponent implements OnInit {
+  constructor(private auth: AuthService) {}
+
+  ngOnInit(): void {
+    console.log('access');
+    this.auth.canAccess();
+  }
+}
