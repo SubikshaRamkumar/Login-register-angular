@@ -60,4 +60,7 @@ export class AuthService {
       }
     );
   }
+  removeToken() {
+    sessionStorage.removeItem('token');
+  }
 }

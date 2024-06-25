@@ -12,4 +12,9 @@ import { AuthService } from '../_service/auth.service';
 })
 export class NavbarComponent {
   constructor(public auth: AuthService) {}
+  logout() {
+    // remove token
+    this.auth.removeToken();
+    this.auth.canAccess(); //so moves to login page
+  }
 }
