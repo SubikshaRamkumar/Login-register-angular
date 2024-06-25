@@ -21,7 +21,7 @@ export class AuthService {
   }
   register(name: string, email: string, password: string) {
     // send data to register api (firebase)
-    return this.http.post(
+    return this.http.post<{ idToken: string }>(
       'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBwDEzWp2AvsnqxosdOT4BksukarcRTcvE',
       {
         displayName: name,
@@ -29,5 +29,8 @@ export class AuthService {
         password,
       }
     ); //returns observable
+  }
+  storeToken(token: string) {
+    sessionStorage.setItem('token', token);
   }
 }
