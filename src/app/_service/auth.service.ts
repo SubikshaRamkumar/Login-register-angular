@@ -33,4 +33,14 @@ export class AuthService {
   storeToken(token: string) {
     sessionStorage.setItem('token', token);
   }
+  login(email: string, password: string) {
+    // send data to login api(firebase)
+    return this.http.post<{ idToken: string }>(
+      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBwDEzWp2AvsnqxosdOT4BksukarcRTcvE',
+      {
+        email,
+        password,
+      }
+    );
+  }
 }
