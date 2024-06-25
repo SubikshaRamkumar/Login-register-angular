@@ -15,8 +15,14 @@ export class AuthService {
   }
   canAccess() {
     if (!this.isAuthenticated()) {
-      // console.log('navigate');
+      // console.log('navigate to login');
       this.router.navigate(['/login']);
+    }
+  }
+  canAuthenticate() {
+    if (this.isAuthenticated()) {
+      // navigate to dashboard
+      this.router.navigate(['/dashboard']);
     }
   }
   register(name: string, email: string, password: string) {

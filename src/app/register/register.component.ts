@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -12,12 +12,15 @@ import { AuthService } from '../_service/auth.service';
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   submit = false;
   formdata = { name: '', email: '', password: '' };
   errorMessage = '';
   loading = false;
   constructor(private auth: AuthService) {}
+  ngOnInit(): void {
+    this.auth.canAuthenticate();
+  }
   onSubmit() {
     // console.log(this.formdata);
     this.loading = true;
@@ -39,6 +42,7 @@ export class RegisterComponent {
           // store token after successful registration
           this.auth.storeToken(data.idToken);
           console.log(data.idToken);
+          this.auth.canAuthenticate();
         },
         error: (data) => {
           // console.log(data);
